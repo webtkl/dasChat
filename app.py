@@ -2,11 +2,15 @@
 # Imports
 #----------------------------------------------------------------------------#
 
-from flask import Flask, render_template, request
-# from flask.ext.sqlalchemy import SQLAlchemy
+from flask import Flask, render_template, request, jsonify
+from flask.ext.sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
 from forms import *
+
+from pprint import pprint
+
+
 import os
 
 #----------------------------------------------------------------------------#
@@ -15,7 +19,7 @@ import os
 
 app = Flask(__name__)
 app.config.from_object('config')
-#db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 # Automatically tear down SQLAlchemy.
 '''
@@ -67,6 +71,26 @@ def register():
 def forgot():
     form = ForgotForm(request.form)
     return render_template('forms/forgot.html', form=form)
+
+
+@app.route('/messages')
+def messages():
+    from models import Message
+
+    messages = Message.query.all()
+    messages_dict = {'messages' : []}
+
+    for message in messages:
+        messages_dict['messages'].append({
+            'sender': message.sender,
+            'timestamp' : message.timestamp,
+            'text' : message.text
+        })
+    
+
+    return jsonify(**messages_dict)
+
+
 
 # Error handlers.
 

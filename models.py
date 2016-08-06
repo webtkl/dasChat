@@ -1,8 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import Column, Integer, String
-# from app import db
+from sqlalchemy import Column, Integer, String
+from app import db
+from datetime import datetime
+
 
 engine = create_engine('sqlite:///database.db', echo=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
@@ -26,6 +28,23 @@ class User(Base):
         self.name = name
         self.password = password
 '''
+
+
+class Message(Base):
+    __tablename__ = 'Messages'
+
+    id = db.Column(db.Integer, primary_key=True)
+    sender = db.Column(db.String)
+    timestamp = db.Column(db.DateTime, default= datetime.utcnow)
+    text = db.Column(String)
+
+    def __init__(self, sender, text):
+        self.sender = sender
+        self.text = text
+
+
+
+
 
 # Create tables.
 Base.metadata.create_all(bind=engine)
