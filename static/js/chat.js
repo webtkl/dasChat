@@ -11,7 +11,7 @@ function getMessages(){
         var $chat = $("#chat");
         $chat.empty();
 
-        &chat.append("<table>");
+        $chat.append("<table>");
         for (var i = 0; i < response['messages'].length;i++){
             var message = response['messages'][i];
             //console.log(message.sender,message.timestamp, message.text)
@@ -20,7 +20,7 @@ function getMessages(){
 
             $chat.append("<tr>" + "<td>"+shinyDate.getHours() + ":" + shinyDate.getMinutes()+"</td>" + "<td> <span class='sender'>"+  message.sender +"</span></td> "+"<td>"+ message.text + "</td></tr>" );
         }
-        &chat.append("</table>");
+        $chat.append("</table>");
 
 
          $('#chat').scrollTop($('#chat')[0].scrollHeight - $('#chat')[0].clientHeight);
