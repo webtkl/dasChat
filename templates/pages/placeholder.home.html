@@ -4,18 +4,51 @@
 
 
 
-<div class="container" id="chat">
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    The Incredible Chat Machine
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="chat">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="post">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="sender">
+                                    <input type="text" class="form-control" id="chattext">
+                                        <div class="input-group-addon">
+                                            <button class="btn btn-primary" id="chatsend">Send</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-<div id="post">
-    <div class="input-group">
-        <input type="text" class="form-control" id="sender">
-        <input type="text" class="form-control" id="chattext">
-            <div class="input-group-addon">
-                <button class="btn btn-primary" id="chatsend">Send</button>
+
+                </div>
             </div>
+
+
+        </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
   <script type="text/javascript" src="/static/js/chat.js" defer></script>
 {% endblock %}
