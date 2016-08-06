@@ -47,6 +47,7 @@ def login_required(test):
 
 @app.route('/')
 def home():
+
     return render_template('pages/placeholder.home.html')
 
 
@@ -86,11 +87,21 @@ def messages():
             'timestamp' : message.timestamp,
             'text' : message.text
         })
-    
+
 
     return jsonify(**messages_dict)
 
 
+@app.route('/send' , methods=['POST'])
+def send():
+    from models import Message
+    import pdb
+    #pdb.set_trace()
+
+    m = Message(request.json.get('sender'),request.json.get('text'))
+    db.session.add(m)
+    db.session.commit()
+    return jsonify(**{'success': True})
 
 # Error handlers.
 
