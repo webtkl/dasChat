@@ -78,7 +78,8 @@ def forgot():
 def messages():
     from models import Message
 
-    messages = Message.query.all()
+    messages = Message.query.order_by(Message.id.desc()).limit(20).all()
+    messages.reverse()
     messages_dict = {'messages' : []}
 
     for message in messages:

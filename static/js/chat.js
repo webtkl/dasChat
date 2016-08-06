@@ -15,7 +15,7 @@ function getMessages(){
             var message = response['messages'][i];
             console.log(message.sender,message.timestamp, message.text)
 
-            $chat.append(message.timestamp +" "+  message.sender +" "+ message.text + "<br/>" )
+            $chat.append(message.timestamp +" <span class='sender'>"+  message.sender +"</span> "+ message.text + "<br/>" )
         }
     }).complete( function() {
 
