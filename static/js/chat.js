@@ -18,8 +18,8 @@ function getMessages(){
             $chat.append(message.timestamp +" "+  message.sender +" "+ message.text + "<br/>" )
         }
     }).complete( function() {
-        setTimeout(getMessages, 1000)
 
+        setTimeout(getMessages, 1000)
     })
 }
 
