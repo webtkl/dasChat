@@ -11,12 +11,19 @@ function getMessages(){
         var $chat = $("#chat");
         $chat.empty();
 
+        &chat.append("<table>");
         for (var i = 0; i < response['messages'].length;i++){
             var message = response['messages'][i];
-            console.log(message.sender,message.timestamp, message.text)
+            //console.log(message.sender,message.timestamp, message.text)
+            var shinyDate = new Date(message.timestamp);
 
-            $chat.append(message.timestamp +" <span class='sender'>"+  message.sender +"</span> "+ message.text + "<br/>" )
+
+            $chat.append("<tr>" + "<td>"+shinyDate.getHours() + ":" + shinyDate.getMinutes()+"</td>" + "<td> <span class='sender'>"+  message.sender +"</span></td> "+"<td>"+ message.text + "</td></tr>" );
         }
+        &chat.append("</table>");
+
+
+         $('#chat').scrollTop($('#chat')[0].scrollHeight - $('#chat')[0].clientHeight);
     }).complete( function() {
 
         setTimeout(getMessages, 1000)
@@ -30,6 +37,8 @@ $("#chatsend").click( function(){
         data: JSON.stringify({"sender": $("#sender").val(), "text": $("#chattext").val()}),
         contentType: 'application/json;charset=UTF-8'
     })
+    $("#chattext").val("");
+
 
 })
 

@@ -3,18 +3,18 @@
 {% block content %}
 
 
-
+<br>
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-primary">
-                <div class="panel-heading">
+                <div class="panel-heading" style="text-align:center">
                     The Incredible Chat Machine
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12">
-                            <div id="chat">
+                            <div id="chat" style="margin-bottom:30px; height:300px; overflow-y: scroll">
                             </div>
                         </div>
                     </div>
@@ -23,23 +23,23 @@
                         <div class="col-xs-12">
                             <div id="post">
                                 <div class="row">
-                                    <div class="col-xs-4">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
+                                    <div class="col-xs-3">
+                                        <div class="input-group" style="min-width:250px">
+                                            <div class="input-group-addon" style="min-width:100px">
                                                 Name
                                             </div>
-                                            <input type="text" class="form-control" id="sender">
+                                            <input type="text" class="form-control" placeholder="Enter your name" id="sender">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-xs-4">
+                                    <div class="col-xs-6">
                                         <div class="input-group">
-                                            <div class="input-group-addon">
+                                            <div class="input-group-addon" style="min-width:100px">
                                                 Message
-                                            </div>
-                                            <input type="text" class="form-control" id="chattext">
+                                            </div style="min-width:500px">
+                                            <input type="text" placeholder="Enter your message" class="form-control" id="chattext">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-primary" id="chatsend">Send</button>
                                             </div>
